@@ -1,0 +1,12 @@
+nginx:
+  image: nginx
+  ports:
+    - "8080:80"
+    - "886:443"
+  volumes:
+    - /var/www/shopware:/var/www/shopware
+
+php-fpm:
+  image: php:fpm
+  volumes_from:
+    - nginx
