@@ -3,7 +3,6 @@
 #link repositories to folder
 #import and export dump
 #install extensions
-#logs for container to host
 #log-folder to gitignore
 #resolve servername
 
@@ -17,7 +16,7 @@ services:
         ipv4_address: 172.20.128.2
     volumes:
       - ./repositories/shopware:/var/www/shopware
-      - ./apache-php/logs:/var/logs/apache-php
+      - ./apache-php/logs:/var/log/apache-php
 
   db:
     image: mysql
