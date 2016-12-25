@@ -1,1 +1,2 @@
-apache-php/logs/*
+apache-php/logs/access.log
+apache-php/logs/error.log
