@@ -2,9 +2,10 @@
 #add repositories: plugins, themes
 #link repositories to folder
 #import and export dump
-#use env variable as database
 #integrate apache config
 #use local files as volumes
+#install extensions
+#add vhost
 
 apache-php:
   build: ./apache-php
