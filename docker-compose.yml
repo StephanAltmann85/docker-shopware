@@ -3,7 +3,6 @@
 #link repositories to folder
 #import and export dump
 #install extensions
-#log-folder to gitignore
 #resolve servername
 
 version: '2'
