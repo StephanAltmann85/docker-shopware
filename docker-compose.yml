@@ -13,26 +13,22 @@ version: '2'
 services:
   apache-php:
     build: ./apache-php
-    ports:
-      - "8080:80"
-      - "886:443"
     networks:
       static-network:
-        ipv4_address: 172.16.238.10
-        ipv6_address: 2001:3984:3989::10
+        ipv4_address: 172.20.128.2
     volumes:
       - ./repositories/shopware:/var/www/shopware
 
   db:
     image: mysql
-    ports:
-      - "6612:3306"
+    networks:
+      static-network:
+        ipv4_address: 172.20.128.4
     environment:
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_USER: dev
       MYSQL_PASSWORD: 123456
       MYSQL_DATABASE: shopware
-
 
 networks:
   static-network:
