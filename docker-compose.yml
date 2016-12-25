@@ -1,12 +1,26 @@
-nginx:
-  image: nginx
+#TODO:
+#add repositories: plugins, themes
+#link repositories to folder
+#import and export dump
+#use env variable as database
+#integrate apache config
+#use local files as volumes
+
+apache-php:
+  build: ./apache-php
+  dockerfile: dockerfile
   ports:
     - "8080:80"
     - "886:443"
   volumes:
-    - /var/www/shopware:/var/www/shopware
+    - ./repositories/shopware:/var/www/shopware
 
-php-fpm:
-  image: php:fpm
-  volumes_from:
-    - nginx
+db:
+  image: mysql
+  ports:
+    - "6612:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: 123456
+    MYSQL_USER: dev
+    MYSQL_PASSWORD: 123456
+    MYSQL_DATABASE: shopware
