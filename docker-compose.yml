@@ -6,7 +6,6 @@
 #use local files as volumes
 #install extensions
 #add vhost
-#add container ip
 
 version: '2'
 
@@ -23,7 +22,7 @@ services:
     image: mysql
     networks:
       static-network:
-        ipv4_address: 172.20.128.4
+        ipv4_address: 172.20.128.3
     environment:
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_USER: dev
