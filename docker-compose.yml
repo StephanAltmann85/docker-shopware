@@ -1,9 +1,9 @@
 #TODO:
-#add repositories: plugins, themes
 #link repositories to folder
 #import and export dump
 #install extensions
 #resolve servername
+#hostmanager
 
 version: '2'
 
