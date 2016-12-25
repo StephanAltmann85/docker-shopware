@@ -1,2 +1,4 @@
 apache-php/logs/access.log
 apache-php/logs/error.log
+repositories/themes/
+repositories/plugins/
