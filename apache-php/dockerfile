@@ -2,11 +2,12 @@ FROM php:5.6.29-apache
 
 MAINTAINER Stephan Altmann <stephan@salty.rocks>
 
-RUN rm -rf /var/www/*
 RUN mkdir /var/www/shopware
+RUN mkdir /var/log/apache-php
 
 RUN chown -R www-data:www-data /var/www
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 
 ADD vhosts/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+ADD vhosts/shopware.conf /etc/apache2/sites-enabled/shopware.conf
