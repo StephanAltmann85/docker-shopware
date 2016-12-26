@@ -1,7 +1,7 @@
 apache-php/logs/access.log
 apache-php/logs/error.log
 repositories/themes/*
-!repositories/themes/.gitignore
+!repositories/themes/.gitkeep
 repositories/plugins/*
 !repositories/plugins/.gitkeep
 repositories/shopware/var/cache/*
