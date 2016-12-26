@@ -2,10 +2,7 @@
 #link repositories to folder
 #import and export dump
 #install ioncube
-#upload size
-#memory limit
 #execution time
-#mod-rewrite
 #resolve servername
 #hostmanager
 #gitignore for bare und responsive in themes
