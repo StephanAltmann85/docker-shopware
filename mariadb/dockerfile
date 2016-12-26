@@ -1,3 +1,0 @@
-FROM mariadb:latest
-
-MAINTAINER Stephan Altmann <stephan@salty.rocks>
