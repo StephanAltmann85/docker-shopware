@@ -3,6 +3,7 @@ apache-php/logs/error.log
 repositories/themes/*
 !repositories/themes/.gitignore
 repositories/plugins/*
+!repositories/plugins/.gitkeep
 repositories/shopware/var/cache/*
 repositories/shopware/web/cache/*
 

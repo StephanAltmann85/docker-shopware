@@ -1,8 +1,5 @@
 #TODO:
-#link repositories to folder
-#resolve servername
 #hostmanager
-#gitignore for bare und responsive in themes
 
 version: '2'
 
@@ -14,7 +11,8 @@ services:
     volumes:
       - ./repositories/shopware:/var/www/shopware
       - ./apache-php/logs:/var/log/apache-php
-      - ./repositories/themes:/var/www/shopware/themes/Frontend
+      - ./repositories/themes/Custom:/var/www/shopware/themes/Frontend/Custom
+      - ./repositories/plugins:/var/www/shopware/engine/Shopware/Plugins
 
   db:
     image: mysql:5.7
