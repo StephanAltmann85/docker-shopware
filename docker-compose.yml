@@ -1,9 +1,15 @@
 #TODO:
 #link repositories to folder
 #import and export dump
-#install extensions
+#install ioncube
+#upload size
+#memory limit
+#execution time
+#mod-rewrite
 #resolve servername
 #hostmanager
+#gitignore for bare und responsive in themes
+#extra_host for db-server
 
 version: '2'
 
