@@ -1,11 +1,8 @@
 #TODO:
 #link repositories to folder
-#import and export dump
 #resolve servername
 #hostmanager
 #gitignore for bare und responsive in themes
-#extra_host for db-server
-#allow external connection to db
 
 version: '2'
 
@@ -27,6 +24,9 @@ services:
       MYSQL_USER: dev
       MYSQL_PASSWORD: 123456
       MYSQL_DATABASE: shopware
+    volumes:
+      - ./db-dump:/docker-entrypoint-initdb.d
+      - ./scripts:/usr/local/bin/export
 
 networks:
   static-network:
