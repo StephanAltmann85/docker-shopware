@@ -5,6 +5,7 @@
 #hostmanager
 #gitignore for bare und responsive in themes
 #extra_host for db-server
+#allow external connection to db
 
 version: '2'
 
@@ -13,16 +14,14 @@ services:
     build: ./apache-php
     networks:
       static-network:
-        ipv4_address: 172.20.128.2
     volumes:
       - ./repositories/shopware:/var/www/shopware
       - ./apache-php/logs:/var/log/apache-php
 
   db:
-    image: mysql
+    image: mysql:5.7
     networks:
       static-network:
-        ipv4_address: 172.20.128.3
     environment:
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_USER: dev
@@ -31,7 +30,11 @@ services:
 
 networks:
   static-network:
+    driver: bridge
     ipam:
-      config:
-        - subnet: 172.20.0.0/16
-          ip_range: 172.28.5.0/24
+     config:
+       - subnet: 172.10.0.0/16
+         gateway: 172.10.5.254
+         aux_addresses:
+          apache-php: 172.10.1.2
+          db: 172.10.1.3
