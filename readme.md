@@ -3,9 +3,9 @@
 Designed to use theme and plugins as separate repositories.
 
 ## Todo
-*integration of host manager
-*use of environment vars
-*performance optimization
+* integration of host manager
+* use of environment vars
+* performance optimization
 
 ## Information
 add following to /etc/hosts
