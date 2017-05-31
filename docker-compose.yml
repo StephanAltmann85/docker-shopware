@@ -15,7 +15,8 @@ services:
       - ./repositories/plugins:/var/www/shopware/engine/Shopware/Plugins/Local
       - ./apache-php/logs/apache2:/var/log/apache2
       - ./repositories/plugins5.2:/var/www/shopware/custom/plugins
-    domain_name: shopware.test
+    environment:
+      DOMAIN_NAME: "shopware.dev"
 
   db:
     image: mysql:5.7
