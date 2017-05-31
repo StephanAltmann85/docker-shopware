@@ -12,8 +12,9 @@ services:
       - ./repositories/shopware:/var/www/shopware
       - ./apache-php/logs:/var/log/apache-php
       - ./repositories/themes/Custom:/var/www/shopware/themes/Frontend/Custom
-      - ./repositories/plugins:/var/www/shopware/engine/Shopware/Plugins
+      - ./repositories/plugins:/var/www/shopware/engine/Shopware/Plugins/Local
       - ./apache-php/logs/apache2:/var/log/apache2
+      - ./repositories/plugins5.2:/var/www/shopware/custom/plugins
 
   db:
     image: mysql:5.7

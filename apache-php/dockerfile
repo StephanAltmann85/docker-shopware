@@ -8,12 +8,16 @@ RUN apt-get update && apt-get install -y \
 
 #create folder structure
 RUN mkdir /var/www/shopware
+RUN mkdir /var/www/shopware/engine
+RUN mkdir /var/www/shopware/engine/Shopware
+RUN mkdir /var/www/shopware/engine/Shopware/Plugins
 RUN mkdir /var/log/apache-php
 
 #set permissions
 RUN chown -R www-data:www-data /var/www
-ENV APACHE_RUN_USER www-data
-ENV APACHE_RUN_GROUP www-data
+RUN chmod -R 777 /var/www/shopware/engine/Shopware/Plugins/
+ENV APACHE_RUN_USER root
+ENV APACHE_RUN_GROUP root
 ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_RUN_DIR /var/run/apache2
 
