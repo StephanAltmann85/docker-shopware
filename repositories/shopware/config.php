@@ -7,13 +7,13 @@
     'password' => '123456',
     'dbname' => 'shopware',
   ),
-    'front' => [
-        'throwExceptions' => false,
-        'showException' => false,
-    ],
-    'phpsettings' => [
+  'front' => [
+    'throwExceptions' => true,
+    'showException' => true,
+  ],
+  'phpsettings' => [
     'error_reporting' => E_ALL & ~E_USER_DEPRECATED,
-    'display_errors' => 0,
+    'display_errors' => 1,
     'date.timezone' => 'Europe/Berlin',
-],
+  ],
 );

@@ -4,8 +4,7 @@ Designed to use theme and plugins as separate repositories.
 
 ## Todo
 * integration of host manager
-* use of environment vars
-* performance optimization
+* add xdebug with remote debug configured
 
 ## Information
 add following to /etc/hosts
