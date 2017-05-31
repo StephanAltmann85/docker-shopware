@@ -9,7 +9,11 @@ Designed to use theme and plugins as separate repositories.
 
 ## Information
 add following to /etc/hosts
-    172.20.5.1      shopware.dev
+    172.x.x.x      shopware.dev
+    
+### Get IP
+    docker exec -it dockershopware_apache-php_1 bash
+    ip addr
 
 database-host: db
 
