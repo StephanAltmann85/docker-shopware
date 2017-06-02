@@ -6,8 +6,6 @@ version: '2'
 services:
   apache-php:
     build: ./apache-php
-    networks:
-      static-network:
     volumes:
       - ./repositories/shopware:/var/www/shopware
       - ./apache-php/logs:/var/log/apache-php
@@ -23,8 +21,6 @@ services:
 
   db:
     image: mysql:5.7
-    networks:
-      static-network:
     environment:
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_USER: dev
