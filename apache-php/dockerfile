@@ -50,3 +50,12 @@ RUN touch /usr/local/etc/php/conf.d/uploads.ini \
 RUN touch /usr/local/etc/php/conf.d/uploads.ini \
     && echo "max_execution_time = 300;" >> /usr/local/etc/php/conf.d/uploads.ini
 RUN a2enmod rewrite
+
+#xdebug
+RUN yes | pecl install xdebug \
+    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.remote_connect_back=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.idekey=phpstorm" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/xdebug.ini \

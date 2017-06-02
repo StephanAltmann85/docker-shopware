@@ -17,6 +17,9 @@ services:
       - ./repositories/plugins5.2:/var/www/shopware/custom/plugins
     environment:
       DOMAIN_NAME: "shopware.dev"
+    networks:
+      static-network:
+        ipv4_address: 172.10.1.1
 
   db:
     image: mysql:5.7
@@ -30,6 +33,9 @@ services:
     volumes:
       - ./db-dump:/docker-entrypoint-initdb.d
       - ./scripts:/usr/local/bin/export
+    networks:
+      static-network:
+        ipv4_address: 172.10.1.2
 
 networks:
   static-network:
@@ -38,7 +44,3 @@ networks:
      config:
        - subnet: 172.10.0.0/16
          gateway: 172.10.5.254
-         aux_addresses:
-          apache-php: 172.10.1.2
-          db: 172.10.1.3
-          phpmyadmin: 172.10.1.4
