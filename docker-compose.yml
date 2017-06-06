@@ -15,6 +15,7 @@ services:
       - ./repositories/plugins5.2:/var/www/shopware/custom/plugins
     environment:
       DOMAIN_NAME: "shopware.dev"
+      XDEBUG_CONFIG: remote_host=172.10.5.254
     networks:
       static-network:
         ipv4_address: 172.10.1.1
