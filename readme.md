@@ -3,8 +3,7 @@
 Designed to use theme and plugins as separate repositories.
 
 ## Todo
-* integration of host manager
-* add xdebug with remote debug configured
+
 
 ## Information
 add following to /etc/hosts
