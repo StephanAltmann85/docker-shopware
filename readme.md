@@ -47,3 +47,6 @@ database-host: db
 
 ## access container's bash
     docker exec -it dockershopware_db_1 bash
+    
+## XDebug
+idekey=phpstorm
