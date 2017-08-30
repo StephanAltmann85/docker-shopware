@@ -18,6 +18,9 @@ database-host: db
     docker-compose up -d
 (docker-compose 1.8.x is required)
 
+##At first start
+    chmod -R 777 repositories/shopware/var/
+
 ## Export database dump
     docker exec -it dockershopware_db_1 /usr/local/bin/export/dump.sh
 
