@@ -41,11 +41,11 @@ RUN apt-get install -y vim
 
 #php-settings
 RUN touch /usr/local/etc/php/conf.d/uploads.ini \
-    && echo "upload_max_filesize = 10M;" >> /usr/local/etc/php/conf.d/uploads.ini
+    && echo "upload_max_filesize = 10M;" >> /usr/local/etc/php/conf.d/custom-config.ini
 RUN touch /usr/local/etc/php/conf.d/uploads.ini \
-    && echo "memory_limit = 1024M;" >> /usr/local/etc/php/conf.d/uploads.ini
+    && echo "memory_limit = 1024M;" >> /usr/local/etc/php/conf.d/custom-config.ini
 RUN touch /usr/local/etc/php/conf.d/uploads.ini \
-    && echo "max_execution_time = 300;" >> /usr/local/etc/php/conf.d/uploads.ini
+    && echo "max_execution_time = 300;" >> /usr/local/etc/php/conf.d/custom-config.ini
 RUN a2enmod rewrite
 
 #xdebug
