@@ -1,10 +1,9 @@
-FROM php:7.1-apache
+FROM php:7.2-apache
 
 MAINTAINER Stephan Altmann <stephan@salty.rocks>
 
 #install needed tools
-RUN apt-get update && apt-get install -y \
-	wget 
+RUN apt-get update && apt-get install -y wget
 
 #create folder structure
 RUN mkdir /var/www/shopware
@@ -26,21 +25,19 @@ ADD vhosts/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 ADD vhosts/shopware.conf /etc/apache2/sites-enabled/shopware.conf
 
 #install php extensions
-RUN docker-php-ext-install pdo_mysql 
+RUN docker-php-ext-install pdo_mysql
 RUN apt-get update && \
-            apt-get install -y libfreetype6-dev libjpeg62-turbo-dev && \
+            apt-get install -y libssh2-1-dev libssh2-1 libfreetype6-dev libjpeg62-turbo-dev libxml2-dev  && \
             docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/  &&  \
             docker-php-ext-install gd
-RUN docker-php-ext-install zip
+RUN docker-php-ext-install zip soap
+RUN pecl install ssh2-1.1.2
 
-# Install Ioncube loader
-RUN cd /tmp \
-    && wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz \
-    && tar -xvvzf ioncube_loaders_lin_x86-64.tar.gz \
-    && mv ioncube/ioncube_loader_lin_7.1.so /usr/local/lib/php/extensions/* \
-    && rm -Rf ioncube_loaders_lin_x86-64.tar.gz ioncube \
-    && echo "zend_extension=ioncube_loader_lin_7.1.so" > /usr/local/etc/php/conf.d/00_docker-php-ext-ioncube_loader_lin_7.1.ini
 
+
+
+#install vim
+RUN apt-get install -y vim
 
 #php-settings
 RUN touch /usr/local/etc/php/conf.d/uploads.ini \
@@ -58,4 +55,17 @@ RUN yes | pecl install xdebug \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_connect_back=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.idekey=phpstorm" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/xdebug.ini
+
+#composer
+RUN echo "Install composer"
+RUN curl --show-error https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+#setup grunt
+RUN apt-get install -y gnupg2
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN echo "Install NPM"
+RUN apt-get install -y nodejs
+RUN npm install -g grunt-cli
+
+WORKDIR /var/www/shopware

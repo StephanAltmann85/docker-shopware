@@ -2,25 +2,59 @@
 
 Designed to use theme and plugins as separate repositories.
 
-## Todo
+## Chanmges
+* Updated to PHP 7.2
+* removed ioncube
+* added support for grunt
+* added .env file
+* added support for mac os
+* updated readme
+* removed obsolete files
+* updated gitignore
 
+TODO: 
+folders
+mac os
 
 ## Information
 add following to /etc/hosts
-    172.10.1.1      shopware.dev
-    
-### Get IP
-    docker exec -it dockershopware_apache-php_1 ip addr
+    172.128.1.1      shopware.test    
 
-database-host: db
+database-host: db / 172.128.1.2
+
+### Folders & Files
+#### repositories/shopware
+Should contain shopware installation
+
+#### repositories/custom
+Should contain custom plugins 
+-edit docker-compose.yml for editing source
+
+#### repositories/theme
+-edit docker-compose.yml for editing source
+-Theme destination folder set in .env-file
+
+#### .env
+defines first 2 bits of ips and theme name
+
+#### db-dump
+contains database dump imported at build
 
 ## How to start
+### Linux
     docker-compose up -d
 (docker-compose 1.8.x is required)
 
+### MacOs    
+    docker-compose -f docker-compose-mac.yml up -d
+    
+    add following to /etc/hosts
+        localhost     shopware.test
+
+
 ## At first start
     chmod -R 777 repositories/
-    
+
 ## config.php
     <?php return array (
         'db' =>
@@ -43,10 +77,24 @@ database-host: db
     );
 
 ## Export database dump
-    docker exec -it dockershopware_db_1 /usr/local/bin/export/dump.sh
+    docker-compose exec db /usr/local/bin/export/dump.sh
+    
+## Import database dump  
+    docker-compose up --build  
 
 ## access container's bash
-    docker exec -it dockershopware_db_1 bash
+    docker-compose exec db bash
     
 ## XDebug
 idekey=phpstorm
+
+## Using Grunt
+    docker-compose exec apache-php bash
+    php bin/console sw:theme:dump:configuration
+    cd themes
+    grunt
+    
+## Saving emails using file transporter instead of send
+    In the shop backend (Configuration -> Basic settings -> Shop settings -> Mailer) type 'file' in the field 'Sending method'.
+    Make sure to create a tmp folder in the main shop directory if there is not one already and set necessary write permissions accordingly.
+    Subsequenty, emails will be stored in the tmp folder.
