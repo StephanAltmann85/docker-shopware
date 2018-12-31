@@ -4,4 +4,4 @@ apache-php/logs/apache2/*
 !apache-php/logs/apache2/gitkeep
 repositories/shopware/var/cache/*
 repositories/shopware/web/cache/*
-.idea
+.idea/
