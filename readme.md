@@ -2,7 +2,7 @@
 
 Designed to use theme and plugins as separate repositories.
 
-## Chanmges
+## Changes
 * Updated to PHP 7.2
 * removed ioncube
 * added support for grunt
@@ -11,10 +11,6 @@ Designed to use theme and plugins as separate repositories.
 * updated readme
 * removed obsolete files
 * updated gitignore
-
-TODO: 
-folders
-mac os
 
 ## Information
 add following to /etc/hosts
