@@ -4,11 +4,11 @@ services:
   apache-php:
     build: ./apache-php
     volumes:
-    - ./repositories/shopware:/var/www/shopware
+    #- ../shopware-5.4.4:/var/www/shopware
     - ./apache-php/logs:/var/log/apache-php
-    - ./repositories/theme:/var/www/shopware/themes/Frontend/${THEME}
+    #- ./repositories/theme:/var/www/shopware/themes/Frontend/${THEME}
     - ./apache-php/logs/apache2:/var/log/apache2
-    - ../repositories/custom:/var/www/shopware/custom/plugins
+    - ./certs:/etc/apache2/ssl
     - ./tmp:/tmp
     environment:
       DOMAIN_NAME: "shopware.test"

@@ -4,12 +4,12 @@ services:
   apache-php:
     build: ./apache-php
     volumes:
-    - ./repositories/shopware:/var/www/shopware
-    - ./apache-php/logs:/var/log/apache-php
-    - ./repositories/theme:/var/www/shopware/themes/Frontend/${THEME}
-    - ./apache-php/logs/apache2:/var/log/apache2
-    - ../repositories/custom:/var/www/shopware/custom/plugins
-    - ./tmp:/tmp
+      #- ../shopware-5.4.4:/var/www/shopware
+      - ./apache-php/logs:/var/log/apache-php
+      #- ./repositories/theme:/var/www/shopware/themes/Frontend/${THEME}
+      - ./apache-php/logs/apache2:/var/log/apache2
+      - ./certs:/etc/apache2/ssl
+      - ./tmp:/tmp
     environment:
       DOMAIN_NAME: "shopware.test"
       XDEBUG_CONFIG: remote_host=${IP}.5.254

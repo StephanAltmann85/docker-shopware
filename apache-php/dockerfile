@@ -3,7 +3,8 @@ FROM php:7.2-apache
 MAINTAINER Stephan Altmann <stephan@salty.rocks>
 
 #install needed tools
-RUN apt-get update && apt-get install -y wget
+RUN apt-get update || apt-get update
+RUN apt-get install -y wget
 
 #create folder structure
 RUN mkdir /var/www/shopware
@@ -26,8 +27,8 @@ ADD vhosts/shopware.conf /etc/apache2/sites-enabled/shopware.conf
 
 #install php extensions
 RUN docker-php-ext-install pdo_mysql
-RUN apt-get update && \
-            apt-get install -y libssh2-1-dev libssh2-1 libfreetype6-dev libjpeg62-turbo-dev libxml2-dev  && \
+
+RUN apt-get install -y libssh2-1-dev libssh2-1 libfreetype6-dev libjpeg62-turbo-dev libxml2-dev  && \
             docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/  &&  \
             docker-php-ext-install gd
 RUN docker-php-ext-install zip soap
@@ -47,6 +48,7 @@ RUN touch /usr/local/etc/php/conf.d/uploads.ini \
 RUN touch /usr/local/etc/php/conf.d/uploads.ini \
     && echo "max_execution_time = 300;" >> /usr/local/etc/php/conf.d/custom-config.ini
 RUN a2enmod rewrite
+RUN a2enmod ssl
 
 #xdebug
 RUN yes | pecl install xdebug \
