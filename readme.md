@@ -22,14 +22,6 @@ database-host: db / 172.128.1.2
 #### repositories/shopware
 Should contain shopware installation
 
-#### repositories/custom
-Should contain custom plugins 
--edit docker-compose.yml for editing source
-
-#### repositories/theme
--edit docker-compose.yml for editing source
--Theme destination folder set in .env-file
-
 #### .env
 defines first 2 bits of ips and theme name
 
@@ -50,6 +42,11 @@ contains database dump imported at build
 
 ## At first start
     chmod -R 777 repositories/
+    
+Shopware does require permanent write access to the cache folder. We could map uid/gid. Another option is to use ACL:
+    setfacl -d -m g::rwx path/to/cache/folder
+    setfacl -d -m u::rwx path/to/cache/folder
+    setfacl -d -m o::rwx path/to/cache/folder
 
 ## config.php
     <?php return array (
