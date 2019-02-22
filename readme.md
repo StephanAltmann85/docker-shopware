@@ -44,6 +44,7 @@ contains database dump imported at build
     chmod -R 777 repositories/
     
 Shopware does require permanent write access to the cache folder. We could map uid/gid. Another option is to use ACL:
+
     setfacl -d -m g::rwx path/to/cache/folder
     setfacl -d -m u::rwx path/to/cache/folder
     setfacl -d -m o::rwx path/to/cache/folder
