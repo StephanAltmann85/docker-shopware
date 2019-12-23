@@ -1,4 +1,4 @@
-FROM php:7.2-apache
+FROM php:7.2-apache-stretch
 
 MAINTAINER Stephan Altmann <stephan@salty.rocks>
 
@@ -30,12 +30,9 @@ RUN docker-php-ext-install pdo_mysql
 
 RUN apt-get install -y libssh2-1-dev libssh2-1 libfreetype6-dev libjpeg62-turbo-dev libxml2-dev  && \
             docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/  &&  \
-            docker-php-ext-install gd
-RUN docker-php-ext-install zip soap
+            docker-php-ext-install gd &&  \
+            docker-php-ext-install zip soap bcmath intl
 RUN pecl install ssh2-1.1.2
-
-
-
 
 #install vim
 RUN apt-get install -y vim
