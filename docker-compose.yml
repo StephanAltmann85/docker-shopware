@@ -4,9 +4,10 @@ services:
   apache-php:
     build: ./apache-php
     volumes:
-    - ./repositories/shopware:/var/www/shopware:Z
+    - ../shopware:/var/www/shopware:Z
     - ./apache-php/logs:/var/log/apache-php
-    #- ./repositories/theme:/var/www/shopware/themes/Frontend/${THEME}
+    #- ../theme:/var/www/shopware/themes/Frontend/${THEME}
+    #- ../plugins:/var/www/shopware/custom/plugins
     - ./apache-php/logs/apache2:/var/log/apache2
     - ./certs:/etc/apache2/ssl
     - ./tmp:/tmp
