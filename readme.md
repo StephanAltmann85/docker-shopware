@@ -19,7 +19,7 @@ add following to /etc/hosts
 database-host: db / 172.128.1.2
 
 ### Folders & Files
-#### repositories/shopware
+#### shopware
 Should contain shopware installation
 
 #### .env
